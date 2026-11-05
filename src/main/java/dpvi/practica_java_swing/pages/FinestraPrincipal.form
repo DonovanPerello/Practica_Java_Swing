@@ -8,52 +8,26 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Lloguer"/>
           </Properties>
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="lloguerRegistrarMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar"/>
-              </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="lloguerTornarMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tornar"/>
-              </Properties>
-            </Menu>
-          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="usuariMenuBar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Usuari"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="usuariCrearMenu">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="usuariBorrarMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Borrar"/>
-              </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jocMenuBar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Joc"/>
           </Properties>
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jocCrearMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Crear"/>
-              </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jocBorrarMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Borrar"/>
-              </Properties>
-            </Menu>
-          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

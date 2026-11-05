@@ -62,14 +62,9 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         TaulaLloguers = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         lloguerMenuBar = new javax.swing.JMenu();
-        lloguerRegistrarMenu = new javax.swing.JMenu();
-        lloguerTornarMenu = new javax.swing.JMenu();
         usuariMenuBar = new javax.swing.JMenu();
-        usuariCrearMenu = new javax.swing.JMenu();
-        usuariBorrarMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jocMenuBar = new javax.swing.JMenu();
-        jocCrearMenu = new javax.swing.JMenu();
-        jocBorrarMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,33 +85,17 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         }
 
         lloguerMenuBar.setText("Lloguer");
-
-        lloguerRegistrarMenu.setText("Registrar");
-        lloguerMenuBar.add(lloguerRegistrarMenu);
-
-        lloguerTornarMenu.setText("Tornar");
-        lloguerMenuBar.add(lloguerTornarMenu);
-
         jMenuBar1.add(lloguerMenuBar);
 
         usuariMenuBar.setText("Usuari");
 
-        usuariCrearMenu.setText("Crear");
-        usuariMenuBar.add(usuariCrearMenu);
-
-        usuariBorrarMenu.setText("Borrar");
-        usuariMenuBar.add(usuariBorrarMenu);
+        jMenuItem1.setText("Crear");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        usuariMenuBar.add(jMenuItem1);
 
         jMenuBar1.add(usuariMenuBar);
 
         jocMenuBar.setText("Joc");
-
-        jocCrearMenu.setText("Crear");
-        jocMenuBar.add(jocCrearMenu);
-
-        jocBorrarMenu.setText("Borrar");
-        jocMenuBar.add(jocBorrarMenu);
-
         jMenuBar1.add(jocMenuBar);
 
         setJMenuBar(jMenuBar1);
@@ -134,6 +113,16 @@ public class FinestraPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+           
+
+        CrearUsuari crearUsuari = new CrearUsuari(this, true, gestor);
+
+        crearUsuari.setVisible(true);// TODO add your handling code here:
+
+             // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,15 +152,10 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TaulaLloguers;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JMenu jocBorrarMenu;
-    private javax.swing.JMenu jocCrearMenu;
     private javax.swing.JMenu jocMenuBar;
     private javax.swing.JMenu lloguerMenuBar;
-    private javax.swing.JMenu lloguerRegistrarMenu;
-    private javax.swing.JMenu lloguerTornarMenu;
-    private javax.swing.JMenu usuariBorrarMenu;
-    private javax.swing.JMenu usuariCrearMenu;
     private javax.swing.JMenu usuariMenuBar;
     // End of variables declaration//GEN-END:variables
 }
