@@ -9,6 +9,7 @@ import dpvi.practica_java_swing.clases.Lloguer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import dpvi.practica_java_swing.clases.Juego;
 
 
 /**
@@ -66,8 +67,9 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         lloguerMenuBar = new javax.swing.JMenu();
         usuariMenuBar = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        crearUsuariMenuItem = new javax.swing.JMenuItem();
         jocMenuBar = new javax.swing.JMenu();
+        crearJocMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,13 +94,18 @@ public class FinestraPrincipal extends javax.swing.JFrame {
 
         usuariMenuBar.setText("Usuari");
 
-        jMenuItem1.setText("Crear");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        usuariMenuBar.add(jMenuItem1);
+        crearUsuariMenuItem.setText("Crear");
+        crearUsuariMenuItem.addActionListener(this::crearUsuariMenuItemActionPerformed);
+        usuariMenuBar.add(crearUsuariMenuItem);
 
         jMenuBar1.add(usuariMenuBar);
 
         jocMenuBar.setText("Joc");
+
+        crearJocMenuItem.setText("crear");
+        crearJocMenuItem.addActionListener(this::crearJocMenuItemActionPerformed);
+        jocMenuBar.add(crearJocMenuItem);
+
         jMenuBar1.add(jocMenuBar);
 
         setJMenuBar(jMenuBar1);
@@ -117,7 +124,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void crearUsuariMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuariMenuItemActionPerformed
            
 
         CrearUsuari crearUsuari = new CrearUsuari(this, true, gestor);
@@ -125,7 +132,12 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         crearUsuari.setVisible(true);// TODO add your handling code here:
 
              // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_crearUsuariMenuItemActionPerformed
+
+    private void crearJocMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearJocMenuItemActionPerformed
+        CrearJoc crearJoc = new CrearJoc(this, true, gestor);
+        crearJoc.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_crearJocMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,8 +173,9 @@ public class FinestraPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TaulaLloguers;
+    private javax.swing.JMenuItem crearJocMenuItem;
+    private javax.swing.JMenuItem crearUsuariMenuItem;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu jocMenuBar;
     private javax.swing.JMenu lloguerMenuBar;

@@ -25,6 +25,7 @@ public class CrearUsuari extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.gd = gd;
+        this.setTitle("afegir un usuari");
         
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
         String fechaHoy = sdf.format(new java.util.Date());
