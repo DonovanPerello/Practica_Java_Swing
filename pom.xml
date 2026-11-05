@@ -10,4 +10,22 @@
         <maven.compiler.release>26</maven.compiler.release>
         <exec.mainClass>dpvi.practica_java_swing.Practica_Java_Swing</exec.mainClass>
     </properties>
+    <dependencies>
+    <!-- Otras dependencias que ya tengas aquí -->
+    
+    <!-- Dependencia de FlatLaf -->
+    <dependency>
+        <groupId>com.formdev</groupId>
+        <artifactId>flatlaf</artifactId>
+        <version>3.6</version>
+      <type>jar</type>
+    </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-intellij-themes</artifactId>
+            <version>3.6</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 </project>
+

@@ -7,6 +7,9 @@ package dpvi.practica_java_swing.pages;
 import dpvi.practica_java_swing.clases.GestorDades;
 import dpvi.practica_java_swing.clases.Lloguer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.UIManager;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+
 
 /**
  *
@@ -146,6 +149,13 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        try {
+            UIManager.setLookAndFeel(new FlatArcIJTheme());
+        } catch (Exception ex) {
+            System.err.println("Error al aplicar el tema Arc");
+        }
+        
         java.awt.EventQueue.invokeLater(() -> new FinestraPrincipal().setVisible(true));
     }
 

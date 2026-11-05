@@ -6,7 +6,8 @@ package dpvi.practica_java_swing.pages;
 
 import dpvi.practica_java_swing.clases.GestorDades;
 import dpvi.practica_java_swing.clases.User;
-
+import dpvi.practica_java_swing.clases.ValidationAPI;
+import javax.swing.*;
 /**
  *
  * @author donih
@@ -73,6 +74,8 @@ public class CrearUsuari extends javax.swing.JDialog {
 
         nomField.addActionListener(this::nomFieldActionPerformed);
 
+        confirmarButton.setBackground(new java.awt.Color(51, 204, 0));
+        confirmarButton.setForeground(new java.awt.Color(0, 0, 0));
         confirmarButton.setText("Confirmar");
         confirmarButton.addActionListener(this::confirmarButtonActionPerformed);
 
@@ -153,10 +156,26 @@ public class CrearUsuari extends javax.swing.JDialog {
         String llinatge1 = llinatge1Field.getText();
         String llinatge2 = llinatge2Field.getText();
         String dni = dniField.getText();
+        
+        
+        if(nom.trim().isEmpty() || llinatge1.trim().isEmpty() || llinatge2.trim().isEmpty() || dni.trim().isEmpty() || telefonField.getText().trim().isEmpty() ){
+            JOptionPane.showMessageDialog(this, "Tots els camps marcats amb * són obligatoris.", 
+        "Error de validació", 
+        javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+            return;
+        }
+        
+        if(!ValidationAPI.validarMajusculaInicial(nom)||!ValidationAPI.validarMajusculaInicial(llinatge1)||!ValidationAPI.validarMajusculaInicial(llinatge2)){
+            
+            JOptionPane.showMessageDialog(this, "El nom i els cognoms han de començar per majúscula","Error de validació", 
+        javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
         int telefon = Integer.parseInt(telefonField.getText());
-        
         User usuari = new User(nom, llinatge1, llinatge2, dni, telefon, new java.util.Date());
-        
         this.gd.getUsuaris().add(usuari);
         this.dispose();
     }//GEN-LAST:event_confirmarButtonActionPerformed
