@@ -50,6 +50,11 @@ public class User {
     public Date getDataRegistre() {
         return dataRegistre;
     }
+
+    @Override
+    public String toString() {
+        return this.nom + " " + this.llinatge1;
+    }
     
     
     

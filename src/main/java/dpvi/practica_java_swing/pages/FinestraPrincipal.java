@@ -66,6 +66,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         TaulaLloguers = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         lloguerMenuBar = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         usuariMenuBar = new javax.swing.JMenu();
         crearUsuariMenuItem = new javax.swing.JMenuItem();
         jocMenuBar = new javax.swing.JMenu();
@@ -90,6 +91,11 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         }
 
         lloguerMenuBar.setText("Lloguer");
+
+        jMenuItem1.setText("Registrar");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        lloguerMenuBar.add(jMenuItem1);
+
         jMenuBar1.add(lloguerMenuBar);
 
         usuariMenuBar.setText("Usuari");
@@ -139,6 +145,11 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         crearJoc.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_crearJocMenuItemActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        RegistrarLloguer registrarLloguer = new RegistrarLloguer(this, true, gestor);
+        registrarLloguer.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +187,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem crearJocMenuItem;
     private javax.swing.JMenuItem crearUsuariMenuItem;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu jocMenuBar;
     private javax.swing.JMenu lloguerMenuBar;

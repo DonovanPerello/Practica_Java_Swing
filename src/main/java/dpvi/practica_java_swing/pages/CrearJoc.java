@@ -166,7 +166,7 @@ public class CrearJoc extends javax.swing.JDialog {
         confirmarButton.setText("Confirmar");
         confirmarButton.addActionListener(this::confirmarButtonActionPerformed);
 
-        cancelarButton.setText("Cancelar");
+        cancelarButton.setText("Cancel·lar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

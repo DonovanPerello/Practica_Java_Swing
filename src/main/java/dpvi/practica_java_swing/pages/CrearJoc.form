@@ -293,7 +293,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="cancelarButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
+        <Property name="text" type="java.lang.String" value="Cancel&#xb7;lar"/>
       </Properties>
     </Component>
   </SubComponents>
