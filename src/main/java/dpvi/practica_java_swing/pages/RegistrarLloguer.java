@@ -6,6 +6,7 @@ package dpvi.practica_java_swing.pages;
 
 import dpvi.practica_java_swing.clases.GestorDades;
 import dpvi.practica_java_swing.clases.Juego;
+import dpvi.practica_java_swing.clases.Lloguer;
 import dpvi.practica_java_swing.clases.Plataforma;
 import dpvi.practica_java_swing.clases.User;
 import java.time.LocalDate;
@@ -362,6 +363,7 @@ public class RegistrarLloguer extends javax.swing.JDialog {
     Object item = jocCombo.getSelectedItem();
     
     if (item instanceof Juego) {
+        OpcionPlataforma.clearSelection();
         
         Juego juego = (Juego) item;
         
@@ -413,10 +415,17 @@ public class RegistrarLloguer extends javax.swing.JDialog {
         javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
      }
+     LocalDate fechaActual = LocalDate.now();  
+     LocalDate fechaFutura = fechaActual.plusDays(4); 
      
+     Lloguer lloguer = new Lloguer(id, u, j, plataforma, fechaFutura, fechaFutura, rootPaneCheckingEnabled);
+     
+     gd.getLloguers().add(lloguer);
+     
+     int stockQueQueda = j.getStock(plataforma) - 1;
+     j.setStock(plataforma, stockQueQueda);
     
        
-        
         this.dispose();
     }//GEN-LAST:event_confirmarButtonActionPerformed
 

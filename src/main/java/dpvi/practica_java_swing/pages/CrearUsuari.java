@@ -81,6 +81,7 @@ public class CrearUsuari extends javax.swing.JDialog {
         confirmarButton.addActionListener(this::confirmarButtonActionPerformed);
 
         cancelarButton.setText("❌ Cancelar");
+        cancelarButton.addActionListener(this::cancelarButtonActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,6 +181,10 @@ public class CrearUsuari extends javax.swing.JDialog {
         this.gd.getUsuaris().add(usuari);
         this.dispose();
     }//GEN-LAST:event_confirmarButtonActionPerformed
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments

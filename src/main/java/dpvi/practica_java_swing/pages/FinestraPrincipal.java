@@ -11,6 +11,7 @@ import javax.swing.UIManager;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
 import dpvi.practica_java_swing.clases.Juego;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -53,6 +54,32 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     }
      TaulaLloguers.setModel(modelo);
     }
+    
+    public void actualitzarTaulaLloguers() {
+    DefaultTableModel model = (DefaultTableModel) TaulaLloguers.getModel();
+    
+    model.setRowCount(0);
+    
+    for (Lloguer ll : gestor.getLloguers()) {
+      
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataIniciStr = ll.getDataInici().format(formatter);
+        String dataTornadaStr = ll.getDataTornada().format(formatter);
+        
+       
+        String estat = ll.isRetornat() ? "Sí" : "No";
+
+        model.addRow(new Object[]{
+            ll.getNumRegistre(),
+            ll.getUsuari().getNom(), 
+            ll.getJoc().getNom(),
+            ll.getPlataforma().toString(),
+            dataIniciStr,
+            dataTornadaStr,
+            estat
+        });
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +113,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
                 "Núm. Registre", "Titol del joc", "Usuari que l'ha llogat", "Plataforma", "Data d'inici", "Data de tornada", "Gènere"
             }
         ));
+        TaulaLloguers.setShowGrid(true);
         jScrollPane1.setViewportView(TaulaLloguers);
         if (TaulaLloguers.getColumnModel().getColumnCount() > 0) {
             TaulaLloguers.getColumnModel().getColumn(5).setResizable(false);
@@ -121,11 +149,17 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();

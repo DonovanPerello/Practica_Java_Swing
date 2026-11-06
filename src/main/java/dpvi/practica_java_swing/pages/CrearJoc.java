@@ -295,6 +295,7 @@ public class CrearJoc extends javax.swing.JDialog {
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
