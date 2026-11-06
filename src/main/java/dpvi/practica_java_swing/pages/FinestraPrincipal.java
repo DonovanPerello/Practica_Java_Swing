@@ -8,10 +8,15 @@ import dpvi.practica_java_swing.clases.GestorDades;
 import dpvi.practica_java_swing.clases.Lloguer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
-import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+
+//--------- SI LE FALLA O NO LE DEJA CARGAR LA DEPENDENCIA BORRA ESTE IMPORT---------------
 import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
+//----------ADEMAS VAYA AL MAIN Y BORRE O COMENTE LO QUE LE INDIQUE------------------------
+
 import dpvi.practica_java_swing.clases.Juego;
+import dpvi.practica_java_swing.clases.Plataforma;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -33,28 +38,36 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         
     }
     
-    public void actualizarTabla(){
-        DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("Usuari");
-    modelo.addColumn("Joc");
-    modelo.addColumn("Plataforma");
-    modelo.addColumn("Data d'inici");
-    modelo.addColumn("Data prevista");
-    modelo.addColumn("Estat");
-    
-    for(Lloguer lloguer : gestor.getLloguers()){
-        Object[] fila = new Object[6];
+    public void actualizarTabla() {
         
-        fila[0] = lloguer.getUsuari().getNom();
-        fila[1] = lloguer.getJoc().getNom();
-        fila[2] = lloguer.getPlataforma();
-        fila[3] = lloguer.getDataInici();
-        fila[4] = lloguer.getDataTornada();
-        fila[5] = lloguer.isRetornat()? "Retornat" : "Actiu";
+        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; 
+            }
+        };
         
-        modelo.addRow(fila);
-    }
-     TaulaLloguers.setModel(modelo);
+        modelo.addColumn("Usuari");
+        modelo.addColumn("Joc");
+        modelo.addColumn("Plataforma");
+        modelo.addColumn("Data d'inici");
+        modelo.addColumn("Data prevista");
+        modelo.addColumn("Estat");
+        
+        for (dpvi.practica_java_swing.clases.Lloguer lloguer : gestor.getLloguers()) {
+            Object[] fila = new Object[6];
+            
+            fila[0] = lloguer.getUsuari().getNom();
+            fila[1] = lloguer.getJoc().getNom();
+            fila[2] = lloguer.getPlataforma();
+            fila[3] = lloguer.getDataInici();
+            fila[4] = lloguer.getDataTornada();
+            fila[5] = lloguer.isRetornat() ? "Retornat" : "Actiu";
+            
+            modelo.addRow(fila);
+        }
+        
+        TaulaLloguers.setModel(modelo);
     }
     
     public void actualitzarTaulaLloguers() {
@@ -94,13 +107,16 @@ public class FinestraPrincipal extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         TaulaLloguers = new javax.swing.JTable();
+        RetornarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         lloguerMenuBar = new javax.swing.JMenu();
         regLloguer = new javax.swing.JMenuItem();
         usuariMenuBar = new javax.swing.JMenu();
         crearUsuariMenuItem = new javax.swing.JMenuItem();
+        BorrarUsuariMenuItem = new javax.swing.JMenuItem();
         jocMenuBar = new javax.swing.JMenu();
         crearJocMenuItem = new javax.swing.JMenuItem();
+        BorrarJocMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +137,11 @@ public class FinestraPrincipal extends javax.swing.JFrame {
             TaulaLloguers.getColumnModel().getColumn(5).setResizable(false);
         }
 
+        RetornarButton.setBackground(new java.awt.Color(51, 153, 0));
+        RetornarButton.setForeground(new java.awt.Color(0, 0, 0));
+        RetornarButton.setText("️↩️ Marcar com a retornat");
+        RetornarButton.addActionListener(this::RetornarButtonActionPerformed);
+
         lloguerMenuBar.setText("Lloguer");
 
         regLloguer.setText("Registrar Lloguer");
@@ -135,6 +156,10 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         crearUsuariMenuItem.addActionListener(this::crearUsuariMenuItemActionPerformed);
         usuariMenuBar.add(crearUsuariMenuItem);
 
+        BorrarUsuariMenuItem.setText("Borrar");
+        BorrarUsuariMenuItem.addActionListener(this::BorrarUsuariMenuItemActionPerformed);
+        usuariMenuBar.add(BorrarUsuariMenuItem);
+
         jMenuBar1.add(usuariMenuBar);
 
         jocMenuBar.setText("Joc");
@@ -142,6 +167,10 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         crearJocMenuItem.setText("crear");
         crearJocMenuItem.addActionListener(this::crearJocMenuItemActionPerformed);
         jocMenuBar.add(crearJocMenuItem);
+
+        BorrarJocMenuItem.setText("Borrar");
+        BorrarJocMenuItem.addActionListener(this::BorrarJocMenuItemActionPerformed);
+        jocMenuBar.add(BorrarJocMenuItem);
 
         jMenuBar1.add(jocMenuBar);
 
@@ -151,17 +180,23 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(650, Short.MAX_VALUE)
+                .addComponent(RetornarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(RetornarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,9 +207,8 @@ public class FinestraPrincipal extends javax.swing.JFrame {
 
         CrearUsuari crearUsuari = new CrearUsuari(this, true, gestor);
 
-        crearUsuari.setVisible(true);// TODO add your handling code here:
+        crearUsuari.setVisible(true);
 
-             // TODO add your handling code here:
     }//GEN-LAST:event_crearUsuariMenuItemActionPerformed
 
     private void crearJocMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearJocMenuItemActionPerformed
@@ -187,6 +221,47 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         registrarLloguer.setVisible(true); 
         actualizarTabla();
     }//GEN-LAST:event_regLloguerActionPerformed
+
+    private void RetornarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetornarButtonActionPerformed
+        int filaSeleccionada = TaulaLloguers.getSelectedRow();
+    
+    if (filaSeleccionada == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Si us plau, selecciona un lloguer de la taula primer.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+   
+    Lloguer lloguerElegit = gestor.getLloguers().get(filaSeleccionada);
+    
+ 
+    if (lloguerElegit.isRetornat()) {
+        JOptionPane.showMessageDialog(this, "Aquest lloguer ja ha estat retornat prèviament.", "Avís", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    lloguerElegit.setRetornat(true);
+    
+    Juego joc = lloguerElegit.getJoc();
+    Plataforma plat = lloguerElegit.getPlataforma();
+    
+    int stockActual = joc.getStock(plat);
+    joc.setStock(plat, stockActual + 1);
+    
+    actualizarTabla();
+    
+    JOptionPane.showMessageDialog(this, "Lloguer retornat correctament! Stock actualitzat.", "Èxit", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_RetornarButtonActionPerformed
+
+    private void BorrarUsuariMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarUsuariMenuItemActionPerformed
+        BorrarUsuari bu = new BorrarUsuari(this, true, gestor);
+        bu.setVisible(true);
+        
+    }//GEN-LAST:event_BorrarUsuariMenuItemActionPerformed
+
+    private void BorrarJocMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarJocMenuItemActionPerformed
+        BorrarJoc bj = new BorrarJoc(this, true, gestor);
+        bj.setVisible(true);
+    }//GEN-LAST:event_BorrarJocMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,16 +286,20 @@ public class FinestraPrincipal extends javax.swing.JFrame {
 
         /* Create and display the form */
         
+        //-----------BORRE TODO ESTE TRY-CATCH--------------------
         try {
             UIManager.setLookAndFeel(new FlatCyanLightIJTheme());
         } catch (Exception ex) {
             System.err.println("Error al aplicar el tema Arc");
         }
-        
+        //-------------HASTA AQUI --------------------------------
         java.awt.EventQueue.invokeLater(() -> new FinestraPrincipal().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem BorrarJocMenuItem;
+    private javax.swing.JMenuItem BorrarUsuariMenuItem;
+    private javax.swing.JButton RetornarButton;
     private javax.swing.JTable TaulaLloguers;
     private javax.swing.JMenuItem crearJocMenuItem;
     private javax.swing.JMenuItem crearUsuariMenuItem;
