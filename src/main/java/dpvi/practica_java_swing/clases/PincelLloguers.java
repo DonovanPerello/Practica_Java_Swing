@@ -21,26 +21,30 @@ public class PincelLloguers extends DefaultTableCellRenderer {
         
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
+        // Columna 4: Data prevista, Columna 5: Estat
         Object dataObj = table.getModel().getValueAt(row, 4);
         Object estatObj = table.getModel().getValueAt(row, 5);
 
         if (!isSelected) {
             try {
-                if (estatObj != null && estatObj.toString().equals("Actiu")) {
+                if (estatObj != null && estatObj.toString().equals("Retornat")) {
+                    // Si ya está devuelto: Verde pastel
+                    c.setBackground(new Color(204, 255, 204)); 
+                    c.setForeground(Color.BLACK);
                     
+                } else if (estatObj != null && estatObj.toString().equals("Actiu")) {
                     LocalDate dataTornada = (LocalDate) dataObj;
                     
                     if (LocalDate.now().isAfter(dataTornada)) {
-                        // Fuera de plazo: Rojo pastel suave
+                        // Activo pero fuera de plazo: Rojo pastel
                         c.setBackground(new Color(255, 204, 204)); 
                         c.setForeground(Color.BLACK); 
                     } else {
-                        // Dentro del plazo: Verde pastel suave
-                        c.setBackground(new Color(204, 255, 204)); 
+                        // Activo y en plazo: Blanco normal
+                        c.setBackground(Color.WHITE);
                         c.setForeground(Color.BLACK);
                     }
                 } else {
-                    // Si ya está devuelto (Retornat), lo dejamos blanco
                     c.setBackground(Color.WHITE);
                     c.setForeground(Color.BLACK);
                 }

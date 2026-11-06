@@ -255,12 +255,13 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     private void BorrarUsuariMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarUsuariMenuItemActionPerformed
         BorrarUsuari bu = new BorrarUsuari(this, true, gestor);
         bu.setVisible(true);
-        
+        actualizarTabla();
     }//GEN-LAST:event_BorrarUsuariMenuItemActionPerformed
 
     private void BorrarJocMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarJocMenuItemActionPerformed
         BorrarJoc bj = new BorrarJoc(this, true, gestor);
         bj.setVisible(true);
+        actualizarTabla();
     }//GEN-LAST:event_BorrarJocMenuItemActionPerformed
 
     /**
