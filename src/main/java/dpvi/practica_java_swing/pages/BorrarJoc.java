@@ -104,31 +104,27 @@ public class BorrarJoc extends javax.swing.JDialog {
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
       Juego jocElegit = (Juego) jocCombo.getSelectedItem();
-    
-    if (jocElegit == null) {
-        return; 
-    }
 
-    boolean teHistorial = false;
-    for (Lloguer ll : gd.getLloguers()) {
-        // Comparamos el nombre del juego del alquiler con el nombre del juego elegido
-        if (ll.getJoc().getNom().equals(jocElegit.getNom())) {
-            teHistorial = true;
-            break; 
+        if (jocElegit == null) {
+            return; 
         }
-    }
-    
-    if (teHistorial) {
-        JOptionPane.showMessageDialog(this, 
-            "No es pot esborrar aquest joc perquè té historial de lloguers (actius o retornats).", 
-            "Error d'Integritat", 
-            JOptionPane.ERROR_MESSAGE);
-    } else {
-        // Si no tiene historial, lo borramos de la lista principal
-        gd.getJocs().remove(jocElegit);
-        JOptionPane.showMessageDialog(this, "Joc esborrat amb èxit.", "Èxit", JOptionPane.INFORMATION_MESSAGE);
-        this.dispose(); 
-    }
+
+        boolean teLloguersActius = false;
+        for (Lloguer ll : gd.getLloguers()) {
+            if (ll.getJoc().getNom().equals(jocElegit.getNom()) && !ll.isRetornat()) {
+                teLloguersActius = true;
+                break; 
+            }
+        }
+
+        if (teLloguersActius) {
+            JOptionPane.showMessageDialog(this, "No es pot eliminar aquest joc perquè té lloguers actius.", "Error d'Integritat", JOptionPane.ERROR_MESSAGE);
+        } else {
+            gd.getJocs().remove(jocElegit);
+            gd.getLloguers().removeIf(ll -> ll.getJoc().getNom().equals(jocElegit.getNom()));
+            JOptionPane.showMessageDialog(this, "Joc i el seu historial esborrats amb amb èxit.", "Èxit", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose(); 
+        }
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     /**

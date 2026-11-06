@@ -102,31 +102,28 @@ public class BorrarUsuari extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
-       User usuariElegit = (User) usuarisCombo.getSelectedItem();
-    
-    if (usuariElegit == null) {
-        return; 
-    }
-    
-    boolean teHistorial = false;
-    for (Lloguer ll : gd.getLloguers()) {
-        if (ll.getUsuari().getDni().equals(usuariElegit.getDni())) {
-            teHistorial = true;
-            break; 
+      User usuariElegit = (User) usuarisCombo.getSelectedItem();
+
+        if (usuariElegit == null) {
+            return; 
         }
-    }
-    
-   
-    if (teHistorial) {
-        JOptionPane.showMessageDialog(this, 
-            "No es pot esborrar aquest usuari perquè té historial de lloguers (actius o retornats).", 
-            "Error d'Integritat", 
-           JOptionPane.ERROR_MESSAGE);
-    } else {
-        gd.getUsuaris().remove(usuariElegit);
-        javax.swing.JOptionPane.showMessageDialog(this, "Usuari esborrat amb èxit.", "Èxit", JOptionPane.INFORMATION_MESSAGE);
-        this.dispose(); 
-    }
+
+        boolean teLloguersActius = false;
+        for (Lloguer ll : gd.getLloguers()) {
+            if (ll.getUsuari().getDni().equals(usuariElegit.getDni()) && !ll.isRetornat()) {
+                teLloguersActius = true;
+                break; 
+            }
+        }
+
+        if (teLloguersActius) {
+            JOptionPane.showMessageDialog(this, "No es pot eliminar aquest usuari perquè té lloguers actius.", "Error d'Integritat", JOptionPane.ERROR_MESSAGE);
+        } else {
+            gd.getUsuaris().remove(usuariElegit);
+            gd.getLloguers().removeIf(ll -> ll.getUsuari().getDni().equals(usuariElegit.getDni()));
+            JOptionPane.showMessageDialog(this, "Usuari i el seu historial esborrats amb èxit.", "Èxit", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose(); 
+        }
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     /**
