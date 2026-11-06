@@ -163,10 +163,13 @@ public class CrearJoc extends javax.swing.JDialog {
 
         pdLabel.setText("Plataformes disponibles");
 
-        confirmarButton.setText("Confirmar");
+        confirmarButton.setBackground(new java.awt.Color(51, 153, 0));
+        confirmarButton.setForeground(new java.awt.Color(0, 0, 0));
+        confirmarButton.setText("✔️ Confirmar");
         confirmarButton.addActionListener(this::confirmarButtonActionPerformed);
 
-        cancelarButton.setText("Cancel·lar");
+        cancelarButton.setText("❌ Cancel·lar");
+        cancelarButton.addActionListener(this::cancelarButtonActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,6 +292,10 @@ public class CrearJoc extends javax.swing.JDialog {
     private void switchCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_switchCheckActionPerformed
        switchSpinner.setEnabled(switchCheck.isSelected()); // TODO add your handling code here:
     }//GEN-LAST:event_switchCheckActionPerformed
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments

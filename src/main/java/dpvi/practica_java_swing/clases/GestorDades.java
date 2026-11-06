@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dpvi.practica_java_swing.clases;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,8 +39,14 @@ public class GestorDades {
         j2.setStock(Plataforma.PC, 1);
         jocs.add(j2);
 
-        Lloguer lloguer1 = new Lloguer("01", u1, j1, Plataforma.PS5, new Date(), new Date());
-        Lloguer lloguer2 = new Lloguer("02", u2, j2, Plataforma.PC, new Date(), new Date());
+        LocalDate avui = LocalDate.now();
+        LocalDate daci4Dies = avui.plusDays(4);
+
+        LocalDate fa10Dies = avui.minusDays(10);
+        LocalDate dataTornadaVençuda = fa10Dies.plusDays(4);
+
+        Lloguer lloguer1 = new Lloguer("1", u1, j1, Plataforma.PS5, avui, daci4Dies, false);
+        Lloguer lloguer2 = new Lloguer("2", u2, j2, Plataforma.PC, fa10Dies, dataTornadaVençuda, false);
         lloguers.add(lloguer1);
         lloguers.add(lloguer2);
     }

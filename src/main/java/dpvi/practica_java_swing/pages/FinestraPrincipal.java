@@ -9,6 +9,7 @@ import dpvi.practica_java_swing.clases.Lloguer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
 import dpvi.practica_java_swing.clases.Juego;
 
 
@@ -66,7 +67,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         TaulaLloguers = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         lloguerMenuBar = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        regLloguer = new javax.swing.JMenuItem();
         usuariMenuBar = new javax.swing.JMenu();
         crearUsuariMenuItem = new javax.swing.JMenuItem();
         jocMenuBar = new javax.swing.JMenu();
@@ -92,9 +93,9 @@ public class FinestraPrincipal extends javax.swing.JFrame {
 
         lloguerMenuBar.setText("Lloguer");
 
-        jMenuItem1.setText("Registrar");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        lloguerMenuBar.add(jMenuItem1);
+        regLloguer.setText("Registrar Lloguer");
+        regLloguer.addActionListener(this::regLloguerActionPerformed);
+        lloguerMenuBar.add(regLloguer);
 
         jMenuBar1.add(lloguerMenuBar);
 
@@ -145,10 +146,10 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         crearJoc.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_crearJocMenuItemActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void regLloguerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regLloguerActionPerformed
         RegistrarLloguer registrarLloguer = new RegistrarLloguer(this, true, gestor);
-        registrarLloguer.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        registrarLloguer.setVisible(true); 
+    }//GEN-LAST:event_regLloguerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,7 +175,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         
         try {
-            UIManager.setLookAndFeel(new FlatArcIJTheme());
+            UIManager.setLookAndFeel(new FlatCyanLightIJTheme());
         } catch (Exception ex) {
             System.err.println("Error al aplicar el tema Arc");
         }
@@ -187,10 +188,10 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem crearJocMenuItem;
     private javax.swing.JMenuItem crearUsuariMenuItem;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu jocMenuBar;
     private javax.swing.JMenu lloguerMenuBar;
+    private javax.swing.JMenuItem regLloguer;
     private javax.swing.JMenu usuariMenuBar;
     // End of variables declaration//GEN-END:variables
 }

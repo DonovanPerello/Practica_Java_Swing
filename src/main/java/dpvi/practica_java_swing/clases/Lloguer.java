@@ -8,6 +8,7 @@ package dpvi.practica_java_swing.clases;
  *
  * @author donih
  */
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Lloguer {
@@ -15,19 +16,21 @@ public class Lloguer {
     private User usuari;
     private Juego joc;
     private Plataforma plataforma;
-    private Date dataInici;
-    private Date dataTornada;
+    private LocalDate dataInici;
+    private LocalDate dataTornada;
     private boolean retornat; 
 
-    public Lloguer(String numRegistre, User usuari, Juego joc, Plataforma plataforma, Date dataInici, Date dataTornada) {
+    public Lloguer(String numRegistre, User usuari, Juego joc, Plataforma plataforma, LocalDate dataInici, LocalDate dataTornada, boolean retornat) {
         this.numRegistre = numRegistre;
         this.usuari = usuari;
         this.joc = joc;
         this.plataforma = plataforma;
         this.dataInici = dataInici;
         this.dataTornada = dataTornada;
-        this.retornat = false; 
+        this.retornat = retornat;
     }
+
+    
 
     public String getNumRegistre() {
         return numRegistre;
@@ -45,11 +48,11 @@ public class Lloguer {
         return plataforma;
     }
 
-    public Date getDataInici() {
+    public LocalDate getDataInici() {
         return dataInici;
     }
 
-    public Date getDataTornada() {
+    public LocalDate getDataTornada() {
         return dataTornada;
     }
 

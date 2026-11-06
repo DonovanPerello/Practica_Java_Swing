@@ -77,10 +77,10 @@ public class CrearUsuari extends javax.swing.JDialog {
 
         confirmarButton.setBackground(new java.awt.Color(51, 204, 0));
         confirmarButton.setForeground(new java.awt.Color(0, 0, 0));
-        confirmarButton.setText("Confirmar");
+        confirmarButton.setText("✔️ Confirmar");
         confirmarButton.addActionListener(this::confirmarButtonActionPerformed);
 
-        cancelarButton.setText("Cancelar");
+        cancelarButton.setText("❌ Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -25,10 +25,16 @@ public class Juego {
     public int getStock(Plataforma plataforma) {
         return stock.getOrDefault(plataforma, 0);
     }
+    
 
     public String getNom() {
         return nom;
     }
+
+    public String getGenere() {
+        return genere;
+    }
+    
 
     @Override
     public String toString() {
