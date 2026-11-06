@@ -27,6 +27,8 @@ public class FinestraPrincipal extends javax.swing.JFrame {
      */
     public FinestraPrincipal() {
         initComponents();
+        
+        TaulaLloguers.setDefaultRenderer(Object.class, new dpvi.practica_java_swing.clases.PincelLloguers());
         actualizarTabla();
         
     }
@@ -183,6 +185,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     private void regLloguerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regLloguerActionPerformed
         RegistrarLloguer registrarLloguer = new RegistrarLloguer(this, true, gestor);
         registrarLloguer.setVisible(true); 
+        actualizarTabla();
     }//GEN-LAST:event_regLloguerActionPerformed
 
     /**

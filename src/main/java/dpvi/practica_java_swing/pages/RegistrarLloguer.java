@@ -418,7 +418,7 @@ public class RegistrarLloguer extends javax.swing.JDialog {
      LocalDate fechaActual = LocalDate.now();  
      LocalDate fechaFutura = fechaActual.plusDays(4); 
      
-     Lloguer lloguer = new Lloguer(id, u, j, plataforma, fechaFutura, fechaFutura, rootPaneCheckingEnabled);
+     Lloguer lloguer = new Lloguer(id, u, j, plataforma, fechaActual, fechaFutura, rootPaneCheckingEnabled);
      
      gd.getLloguers().add(lloguer);
      
