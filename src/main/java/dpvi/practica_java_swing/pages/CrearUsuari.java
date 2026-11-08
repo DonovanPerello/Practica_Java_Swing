@@ -174,9 +174,25 @@ public class CrearUsuari extends javax.swing.JDialog {
         javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
+        int telefon = -1;
+        
+        if (telefonField.getText().matches("[0-9]+") ) { // También puedes usar "\\d+"
+        telefon = Integer.parseInt(telefonField.getText());
+        
+            if(telefon > 999999999 || telefon < 100000000){
+                JOptionPane.showMessageDialog(this, "El telefon ha de contenir 9 digits","Error de validació", 
+        javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+        }
+            
+        if(telefon == -1){
+           JOptionPane.showMessageDialog(this, "El telefon nomes pot contenir números","Error de validació", 
+        javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         
-        int telefon = Integer.parseInt(telefonField.getText());
         User usuari = new User(nom, llinatge1, llinatge2, dni, telefon, new java.util.Date());
         this.gd.getUsuaris().add(usuari);
         this.dispose();
