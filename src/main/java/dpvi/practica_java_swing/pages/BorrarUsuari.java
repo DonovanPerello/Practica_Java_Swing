@@ -23,6 +23,7 @@ public class BorrarUsuari extends javax.swing.JDialog {
     public BorrarUsuari(java.awt.Frame parent, boolean modal, GestorDades gd) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Borrar un usuari");
         
         this.gd = gd;
         usuarisCombo.removeAllItems();

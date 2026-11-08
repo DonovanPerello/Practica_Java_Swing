@@ -24,6 +24,7 @@ public class BorrarJoc extends javax.swing.JDialog {
     public BorrarJoc(java.awt.Frame parent, boolean modal, GestorDades gd) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Borrar un joc");
         
         this.gd = gd;
         jocCombo.removeAllItems();
